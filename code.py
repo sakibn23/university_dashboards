@@ -1,4 +1,4 @@
-!pip install streamlit pandas matplotlib seaborn
+#Load necessary libraries
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
