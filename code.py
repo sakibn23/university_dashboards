@@ -48,6 +48,7 @@ st.bar_chart(department_data.T)
 
 # Trends Over Time
 st.header("Trends Over Time")
+
 # Aggregate data for trends
 trend_data = data.groupby(['Year', 'Term']).agg({
     'Applications': 'sum',
