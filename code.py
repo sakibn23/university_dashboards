@@ -48,6 +48,7 @@ st.bar_chart(department_data.T)
 
 # Trends Over Time
 st.header("Trends Over Time")
+# Aggregate data for trends
 trend_data = data.groupby(['Year', 'Term']).agg({
     'Applications': 'sum',
     'Admitted': 'sum',
@@ -59,20 +60,22 @@ trend_data = data.groupby(['Year', 'Term']).agg({
 # Applications, Admissions, and Enrollments Trends
 st.subheader("Applications, Admissions, and Enrollments")
 fig, ax = plt.subplots(figsize=(10, 6))
-sns.lineplot(data=trend_data, x='Year', y='Applications', hue='Term', ax=ax, marker='o')
-sns.lineplot(data=trend_data, x='Year', y='Admitted', hue='Term', ax=ax, marker='o')
-sns.lineplot(data=trend_data, x='Year', y='Enrolled', hue='Term', ax=ax, marker='o')
+sns.lineplot(data=trend_data, x='Year', y='Applications', hue='Term', ax=ax, marker='o', label='Applications')
+sns.lineplot(data=trend_data, x='Year', y='Admitted', hue='Term', ax=ax, marker='o', label='Admitted')
+sns.lineplot(data=trend_data, x='Year', y='Enrolled', hue='Term', ax=ax, marker='o', label='Enrolled')
 ax.set_title("Trends Over Time")
 ax.set_ylabel("Count")
+ax.legend()  # Add legend to differentiate lines
 st.pyplot(fig)
 
 # Retention Rate and Satisfaction Trends
 st.subheader("Retention Rate and Satisfaction Trends")
 fig, ax = plt.subplots(figsize=(10, 6))
-sns.lineplot(data=trend_data, x='Year', y='Retention Rate (%)', hue='Term', ax=ax, marker='o')
-sns.lineplot(data=trend_data, x='Year', y='Student Satisfaction (%)', hue='Term', ax=ax, marker='o')
+sns.lineplot(data=trend_data, x='Year', y='Retention Rate (%)', hue='Term', ax=ax, marker='o', label='Retention Rate (%)')
+sns.lineplot(data=trend_data, x='Year', y='Student Satisfaction (%)', hue='Term', ax=ax, marker='o', label='Student Satisfaction (%)')
 ax.set_title("Retention and Satisfaction Trends")
 ax.set_ylabel("Percentage")
+ax.legend()  # Add legend to differentiate lines
 st.pyplot(fig)
 
 # Department-wise Trends
@@ -91,6 +94,7 @@ sns.lineplot(data=department_trends, x='Year', y='Arts Enrolled', ax=ax, label='
 sns.lineplot(data=department_trends, x='Year', y='Science Enrolled', ax=ax, label='Science', marker='o')
 ax.set_title("Department-wise Enrollment Trends")
 ax.set_ylabel("Enrollment Count")
+ax.legend()  # Add legend to differentiate lines
 st.pyplot(fig)
 
 # Key Findings and Insights
