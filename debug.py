@@ -48,6 +48,7 @@ st.bar_chart(department_data.T)
 
 # Set the correct option
 pd.options.mode.use_inf_as_na = True
+
 # Trends Over Time
 st.header("Trends Over Time")
 
