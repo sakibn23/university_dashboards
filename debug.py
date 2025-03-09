@@ -46,6 +46,8 @@ st.header("Enrollment Breakdown by Department")
 department_data = filtered_data[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']]
 st.bar_chart(department_data.T)
 
+# Set the correct option
+pd.options.mode.use_inf_as_na = True
 # Trends Over Time
 st.header("Trends Over Time")
 
